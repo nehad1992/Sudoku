@@ -1,10 +1,7 @@
 // SINGLE CELL ------------------
 
-// returns "incorrect" 
-// input: any output: incorrect
 
-// returns "empty spot" when cell not filled/defined
-// input: _
+
 
 // returns "incorrect" when cell has something other than 1-9
 // input: a
@@ -29,5 +26,14 @@ describe('cell units', () => {
     expect(cell.row).toEqual(0);
     expect(cell.column).toEqual(0);
     expect(cell.value).toEqual(1);
+  });
+
+  test('should return undefined if a cell value is empty', () => {
+    var noValueCell = new Cell(0,0, );
+    expect(noValueCell.checkValue()).toEqual();
+  });
+  test('should return "not a valid input" error when the input is not a number from 1-9', function(){
+    var letterCell = new Cell(0,0,"a");
+    expect(letterCell.checkValue()).toEqual("not a valid input");
   });
 });
