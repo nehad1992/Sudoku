@@ -36,4 +36,8 @@ describe('cell units', () => {
     var letterCell = new Cell(0,0,"a");
     expect(letterCell.checkValue()).toEqual("not a valid input");
   });
+  test('should return the value when the input is a number from 1-9', () => {
+    var cell = new Cell(0,0,8);
+    expect(cell.checkValue()).toEqual(8);
+  });
 });

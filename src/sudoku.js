@@ -9,11 +9,14 @@ export function Cell(row, column, value){
 }
 
 Cell.prototype.checkValue = function(){
-  var not1to9 = /[^1-9]/;
   if (!this.value){
     return undefined;
-  } else if (this.value.match(not1to9)){
-    return "not a valid input";
+  } else {
+    var stringVal = this.value.toString();
+    if (stringVal.match(/[^1-9]/)){
+      return "not a valid input";
+    } else {
+      return this.value;
+    }
   }
-
 }
