@@ -10,8 +10,7 @@
 
 import { Cell, Row } from './../src/sudoku.js';
 
-describe('cell units', () => {
-
+describe('Cells', () => {
   test('should correctly construct a cell object with a location pair of row and column and a value', () => {
     var cell = new Cell(0,0,1);
     expect(cell.row).toEqual(0);
@@ -38,5 +37,18 @@ describe('Row', () => {
     var row = new Row(20);
     expect(row.cells.length).toEqual(9);
     expect(row.cells[0].row).toEqual(20);
+  });
+
+  test('should return true if the cell values are not repeated', () => {
+    var row = new Row(0);
+    row.autoAssignRowValues();
+    expect(row.checkRepeats()).toEqual(true);
+  })
+
+  test('should return false if the cell values are repeated', () => {
+    var row = new Row(0);
+    row.autoAssignRowValues();
+    row.cells[8].assignValue(8);
+    expect(row.checkRepeats()).toEqual(false);
   })
 });

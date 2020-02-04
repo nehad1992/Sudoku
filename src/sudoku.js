@@ -7,6 +7,16 @@ export function Row(number){
   this.cells = [new Cell(number, 0, ), new Cell(number, 1, ), new Cell(number, 2, ), new Cell(number, 3, ), new Cell(number, 4, ), new Cell(number, 5, ), new Cell(number, 6, ), new Cell(number, 7, ), new Cell(number, 8, )];
 }
 
+Row.prototype.autoAssignRowValues = function(){
+  for (var i = 0; i < 9; i ++){
+    this.cells[i].value = (i+1);
+  }
+}
+
+Row.prototype.checkRepeats = function(){
+  return true;
+}
+
 export function Cell(row, column, value){
  this.row = row;
  this.column = column;
