@@ -13,7 +13,15 @@ Row.prototype.autoAssignRowValues = function(){
   }
 }
 
-Row.prototype.checkRepeats = function(){
+Row.prototype.checkNoRepeats = function(){
+  for (var i = 0; i < 9; i++) {
+    var currentCell = this.cells[i];
+    for (var j = 0; j < 9; j++) {
+      if (this.cells[j] != currentCell && this.cells[j].value === currentCell.value){
+        return false;
+      }
+    }
+  }
   return true;
 }
 

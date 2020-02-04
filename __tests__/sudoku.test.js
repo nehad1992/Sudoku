@@ -1,13 +1,3 @@
-// SINGLE CELL ------------------
-
-// returns "correct" when first row has 1-9 in order - NOT repeated
-// input: 
-
-
-
-// ROWS? --------------------
-
-
 import { Cell, Row } from './../src/sudoku.js';
 
 describe('Cells', () => {
@@ -42,13 +32,13 @@ describe('Row', () => {
   test('should return true if the cell values are not repeated', () => {
     var row = new Row(0);
     row.autoAssignRowValues();
-    expect(row.checkRepeats()).toEqual(true);
+    expect(row.checkNoRepeats()).toEqual(true);
   })
 
   test('should return false if the cell values are repeated', () => {
     var row = new Row(0);
     row.autoAssignRowValues();
     row.cells[8].assignValue(8);
-    expect(row.checkRepeats()).toEqual(false);
+    expect(row.checkNoRepeats()).toEqual(false);
   })
 });
