@@ -1,14 +1,5 @@
 // SINGLE CELL ------------------
 
-
-
-
-// returns "incorrect" when cell has something other than 1-9
-// input: a
-
-// returns "correct" when first cell has any numbers from 1-9
-// input: 1
-
 // returns "correct" when first row has 1-9 in order - NOT repeated
 // input: 
 
@@ -17,7 +8,7 @@
 // ROWS? --------------------
 
 
-import { Cell } from './../src/sudoku.js';
+import { Cell, Row } from './../src/sudoku.js';
 
 describe('cell units', () => {
 
@@ -40,4 +31,12 @@ describe('cell units', () => {
     var cell = new Cell(0,0,8);
     expect(cell.checkValue()).toEqual(8);
   });
+});
+
+describe('Row', () => {
+  test('should correctly construct a row with a cells array of length 9 and a row value equal to the passed-in row position', () => {
+    var row = new Row(20);
+    expect(row.cells.length).toEqual(9);
+    expect(row.cells[0].row).toEqual(20);
+  })
 });
