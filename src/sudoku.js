@@ -1,10 +1,9 @@
-import { removeAllListeners } from "cluster";
-
-function Puzzle(){
+export function Puzzle(){
   this.rows = [new Row(0), new Row(1),new Row(2),
     new Row(3), new Row(4), new Row(5), new Row(6),
     new Row(7), new Row(8)];
 }
+
 Puzzle.prototype.checkColumnRepeats = function(){
   var columnNumber = 0;
   for(var i =0; i<9; i++){
@@ -16,14 +15,28 @@ Puzzle.prototype.checkColumnRepeats = function(){
     }
   }return true;
 }
+
+Puzzle.prototype.autofillPuzzle = function(){
+  for (var i=0; i<9; i++){
+    this.rows[i].autoAssignRowValues(i+1);
+  }
+}
+
 export function Row(number){
   this.number = number;
   this.cells = [new Cell(number, 0, ), new Cell(number, 1, ), new Cell(number, 2, ), new Cell(number, 3, ), new Cell(number, 4, ), new Cell(number, 5, ), new Cell(number, 6, ), new Cell(number, 7, ), new Cell(number, 8, )];
 }
 
-Row.prototype.autoAssignRowValues = function(){
+Row.prototype.autoAssignRowValues = function(start){
+  var currentVal = start;
   for (var i = 0; i < 9; i ++){
-    this.cells[i].value = (i+1);
+    if (currentVal%9 === 0){
+      var inputVal = 9;
+    } else {
+      var inputVal = currentVal%9;
+    }
+    this.cells[i].value = (inputVal);
+    currentVal++;
   }
 }
 

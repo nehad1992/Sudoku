@@ -1,4 +1,4 @@
-import { Cell, Row } from './../src/sudoku.js';
+import { Cell, Row , Puzzle} from './../src/sudoku.js';
 
 describe('Cells', () => {
   test('should correctly construct a cell object with a location pair of row and column and a value', () => {
@@ -33,19 +33,23 @@ describe('Row', () => {
     var row = new Row(0);
     row.autoAssignRowValues();
     expect(row.checkNoRepeats()).toEqual(true);
-  })
+  });
 
   test('should return false if the cell values are repeated', () => {
     var row = new Row(0);
-    row.autoAssignRowValues();
+    row.autoAssignRowValues(1);
     row.cells[8].assignValue(8);
     expect(row.checkNoRepeats()).toEqual(false);
-  })
+  });
 });
 
 describe('Cell',() => {
  test('should return true if cell values do not repeat themselves',() =>{
  var puzzle = new Puzzle ();
+ puzzle.autofillPuzzle();
  expect(puzzle.checkColumnRepeats()).toEqual(true);
  });
+//  test('should return false if cell values repeat themselves', () => {
+//    expect(puzzle.checkColumnRepeats()).toEqual(false);
+//  });
 });
