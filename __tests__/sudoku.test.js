@@ -42,3 +42,10 @@ describe('Row', () => {
     expect(row.checkNoRepeats()).toEqual(false);
   })
 });
+
+describe('Cell',() => {
+ test('should return true if cell values do not repeat themselves',() =>{
+ var puzzle = new Puzzle ();
+ expect(puzzle.checkColumnRepeats()).toEqual(true);
+ });
+});
